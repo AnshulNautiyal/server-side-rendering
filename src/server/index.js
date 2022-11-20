@@ -17,7 +17,7 @@ app.get("/", (req, resp) => {
             <title>SSR</title>
         </head>
             <body>
-            <p>this is base html-- kk </p>
+            <p>this is base html</p>
             <div id="root"></div>
             </body>
             <script src="/client-build.js"></script>
