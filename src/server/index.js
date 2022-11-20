@@ -1,13 +1,27 @@
 import express from "express";
-import render from '../server/helper/renderer';
+// import React from "react";
+// import { renderToString } from "react-dom/server";
+
 const app = express();
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`listening to port ${PORT}`);
+app.use(express.static('public'));
+app.listen(3000, () => {
+  console.log("Server is running in port 3000");
 });
-app.use(express.static("public"));
+
 app.get("/", (req, resp) => {
-  console.log("I am sending something...");
-  return resp.send(render());
+  console.log("iniital page is rendering");
+  const html = `
+        <html>
+        <head>
+            <title>SSR</title>
+        </head>
+            <body>
+            <p>this is base html-- kk </p>
+            <div id="root"></div>
+            </body>
+            <script src="/client-build.js"></script>
+        </html>
+    `;
+  resp.send(html);
 });
